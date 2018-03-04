@@ -11,14 +11,6 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 })
 
-const jquery = new webpack.ProvidePlugin({
-  $: 'jquery',
-  jQuery: 'jquery',
-  jquery: 'jquery',
-  'window.jQuery': 'jquery',
-  Popper: ['popper.js', 'default']
-})
-
 const extractSass = new ExtractTextPlugin({
   filename: 'css/[name].[hash].css',
   disable: process.env.NODE_ENV === 'development'
@@ -35,10 +27,11 @@ const assets = new AssetsPlugin({
 })
 
 const env = new webpack.DefinePlugin({
-  'process.env': {
-    'SUBSTRATE_URL': JSON.stringify('https://sackrin/'),
-    'SUBSTRATE_API_URL': JSON.stringify('https://sackrin/api/')
-  }
+  'process.env': {}
+})
+
+const options = new webpack.LoaderOptionsPlugin({
+  options: {}
 })
 
 module.exports = {
@@ -66,11 +59,7 @@ module.exports = {
     port: 9000
   },
   module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
+    rules: [
       {
         enforce: 'pre',
         test: /\.js[x]?$/,
@@ -83,24 +72,15 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.scss|.css$/,
+        test: /\.css$/,
         use: extractSass.extract({
           use: [
             {
               loader: 'css-loader',
               options: {sourceMap: true}
-            },
-            {
-              loader: 'sass-loader',
-              options: {sourceMap: true}
             }
           ],
           fallback: 'style-loader'})
-      },
-      {
-        test: /\.(jpg|jpeg|gif|png|svg)(\?.*$|$)/,
-        exclude: [/node_modules/, /src\/fonts/],
-        loader: 'url-loader?limit=1024&name=images/[name].[ext]'
       },
       {
         test: /\.(svg|woff|woff2|ttf|eot|otf)(\?.*$|$)/,
@@ -109,5 +89,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [HtmlWebpackPluginConfig, extractSass, jquery, cleanup, assets, env ]
+  plugins: [HtmlWebpackPluginConfig, extractSass, cleanup, assets, env, options ]
 }
