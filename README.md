@@ -1,5 +1,9 @@
 # React Introduction
 
+This repo is a simple tool I use to introduce people into the world of react single page application development. The aim is to include all of the basic tools, scripts and processes needed to create a basic react spa application. If you spot something that can be improved, or think that something can be added to better achieve best practice then please contribute!
+
+Use the following process to setup and start using this boilerplate on a windows machine.
+
 ## Powershell
 - Search for powershell in windows shell
 - Open powershell and add to favourites bar
