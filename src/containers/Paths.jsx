@@ -5,11 +5,13 @@ import { ConnectedRouter } from 'react-router-redux'
 import { store, history } from 'scripts/store'
 import { Home, NotFound } from 'containers'
 import { StyleRoot } from 'radium'
+import { typography } from 'scripts/styles'
 
 export class Paths extends React.Component {
   render () {
     return (
       <StyleRoot>
+        <Style rules={typography} />
         <Provider store={store}>
           <ConnectedRouter history={history}>
             <Switch>
