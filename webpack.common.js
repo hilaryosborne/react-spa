@@ -2,6 +2,7 @@ const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const AssetsPlugin = require('assets-webpack-plugin')
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
+const WebpackCopyPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -10,6 +11,10 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: 'body'
 })
+
+const copyMediaPlugin = new WebpackCopyPlugin([
+  {from: 'src/media', to: 'media'}
+])
 
 const extractSass = new ExtractTextPlugin({
   filename: 'css/[name].[hash].css',
@@ -45,7 +50,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
-      images: path.resolve('src/images/'),
+      media: path.resolve('src/media/'),
       config: path.resolve('src/config/'),
       components: path.resolve('src/components/'),
       containers: path.resolve('src/containers/'),
@@ -84,10 +89,10 @@ module.exports = {
       },
       {
         test: /\.(svg|woff|woff2|ttf|eot|otf)(\?.*$|$)/,
-        exclude: [/images/, /src\/images/],
+        exclude: [/media/, /src\/media/],
         loader: 'url-loader?limit=1024&name=fonts/[path][name].[ext]'
       }
     ]
   },
-  plugins: [HtmlWebpackPluginConfig, extractSass, cleanup, assets, env, options ]
+  plugins: [HtmlWebpackPluginConfig, extractSass, cleanup, copyMediaPlugin, assets, env, options ]
 }
