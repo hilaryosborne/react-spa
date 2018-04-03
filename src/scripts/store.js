@@ -1,10 +1,13 @@
-import * as reducers from 'reducers'
 import sagas from './sagas'
 import createHistory from 'history/createHashHistory'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { routerMiddleware, routerReducer } from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
 
+// Compile the reducer collection
+const reducers = {
+  routing: routerReducer
+}
 // Create a new saga middleware provider
 const sagaMiddleware = createSagaMiddleware()
 // Create a history of your choosing (we're using a browser history in this case)

@@ -53,8 +53,8 @@ module.exports = {
       media: path.resolve('src/media/'),
       config: path.resolve('src/config/'),
       components: path.resolve('src/components/'),
-      containers: path.resolve('src/containers/'),
-      reducers: path.resolve('src/reducers/'),
+      features: path.resolve('src/features/'),
+      endpoints: path.resolve('src/endpoints/'),
       scripts: path.resolve('src/scripts/')
     }
   },
