@@ -24,7 +24,7 @@ export const typography = {
   h3: { fontSize: '1.6rem' },
   h4: { fontSize: '1.6rem' },
   h5: { fontSize: '1.6rem' },
-  h6: { fontSize: '1.6rem' },
+  h6: { fontSize: '1.6rem' }
 }
 
 export const backgrounds = {
