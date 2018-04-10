@@ -6,7 +6,7 @@ This boilerplate aims to use CSS in JS with radium rather than scss or css. Beca
 
 ## App structure
 
-* ```src/enpoints``` is intended for application 'pages' and where components called by react-router should be stored
+* ```src/endpoints``` is intended for application 'pages' and where components called by react-router should be stored
 * ```src/features``` is intended for collections of components to provide application features. Features should be redux state aware and handle the majority of redux state management. This is where reducers and sagas should be stored.
 * ```src/components``` is intended for simple, generic components to be stored. Components should generally not directly interact with application state but can use component state.
 
