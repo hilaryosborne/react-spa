@@ -1,4 +1,6 @@
 export { Menu } from './Menu'
-export { MenuLink } from './MenuLink'
 export { MenuToggle } from './MenuToggle'
 export { MenuDropdown } from './MenuDropdown'
+export { MenuExternalLink } from './MenuExternalLink'
+export { MenuRouteLink } from './MenuRouteLink'
+export { MenuDivider } from './MenuDivider'
