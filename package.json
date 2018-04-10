@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "overwatch": "jest --watch",
     "linter": "eslint src/**/*.{js,jsx} --ext .js, .jsx",
     "start": "webpack-dev-server --mode development --config webpack.common.js",
     "build:dev": "webpack --mode development -w --env=dev --progress --profile --colors --config webpack.common.js",

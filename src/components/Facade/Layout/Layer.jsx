@@ -10,8 +10,14 @@ export class Layer extends React.Component {
     children: PropTypes.any,
     className: PropTypes.string
   }
+
+  static defaultProps = {
+    style: {},
+    className: ''
+  }
+
   render () {
-    return (<div className={classnames('layer', this.props.className)} style={[this.props.style]}>
+    return (<div className={classnames('layer', this.props.className)} style={{...this.props.style}}>
       {this.props.children}
     </div>)
   }

@@ -1,27 +1,26 @@
 import React from 'react'
 import radium from 'radium'
 import PropTypes from 'prop-types'
-import color from 'color'
-import { branding, colors } from 'scripts/styles'
+import classnames from 'classnames'
 
 export const styling = {
-  base: {},
-  primary: {
-    background: branding.primary,
-    color: colors.white,
-    ':hover': {
-      background: color(branding.primary).lighten(0.3).rgb().string()
-    }
-  }
+  base: {}
 }
 
 @radium
 export class Btn extends React.Component {
   static propTypes = {
-    kind: PropTypes.oneOf(['primary']).isRequired,
-    children: PropTypes.any
+    children: PropTypes.any,
+    className: PropTypes.string,
+    style: PropTypes.object
   }
+
+  static defaultProps = {
+    className: '',
+    style: {}
+  }
+
   render () {
-    return (<button style={[styling.base, styling[this.props.kind]]} className='btn'>{this.props.children}</button>)
+    return (<button style={{...styling.base, ...this.props.style}} className={classnames('btn', this.props.className)}>{this.props.children}</button>)
   }
 }
